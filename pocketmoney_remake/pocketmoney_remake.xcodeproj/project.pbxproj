@@ -21,6 +21,7 @@
 		33C83CD327A929B800523435 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD227A929B800523435 /* HistoryView.swift */; };
 		33C83CD527A9345700523435 /* FavoriteMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD427A9345700523435 /* FavoriteMenuView.swift */; };
 		33C83CD727A9595000523435 /* InputButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD627A9595000523435 /* InputButtonStyle.swift */; };
+		33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD827AA6BBA00523435 /* MoneyData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		33C83CD227A929B800523435 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		33C83CD427A9345700523435 /* FavoriteMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMenuView.swift; sourceTree = "<group>"; };
 		33C83CD627A9595000523435 /* InputButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputButtonStyle.swift; sourceTree = "<group>"; };
+		33C83CD827AA6BBA00523435 /* MoneyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				33C83CA327A91A4C00523435 /* Assets.xcassets */,
 				33C83CA827A91A4C00523435 /* Persistence.swift */,
 				33C83CAA27A91A4C00523435 /* pocketmoney_remake.xcdatamodeld */,
+				33C83CD827AA6BBA00523435 /* MoneyData.swift */,
 				33C83CA527A91A4C00523435 /* Preview Content */,
 			);
 			path = pocketmoney_remake;
@@ -286,6 +289,7 @@
 				33C83CD727A9595000523435 /* InputButtonStyle.swift in Sources */,
 				33C83CD127A9299C00523435 /* InputView.swift in Sources */,
 				33C83CA227A91A3C00523435 /* ContentView.swift in Sources */,
+				33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */,
 				33C83CA027A91A3C00523435 /* pocketmoney_remakeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

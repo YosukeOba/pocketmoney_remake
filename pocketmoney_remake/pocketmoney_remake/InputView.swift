@@ -16,13 +16,20 @@ struct InputView: View {
     @State var isOpenFavoriteMenuView: Bool = false
     
     @FetchRequest(
+        entity: MoneyList.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \MoneyList.timestamp, ascending: false)],
+        predicate: nil,
+        animation: .default)
+    private var moneyLists: FetchedResults<MoneyList>
+    
+    @FetchRequest(
         entity: InputList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \InputList.number, ascending: true)],
         predicate: nil,
         animation: .default)
     private var inputLists: FetchedResults<InputList>
     
-    @Environment(\.managedObjectContext) private var context
+    @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
         ZStack{
@@ -64,10 +71,9 @@ struct InputView: View {
                                 Button(action: {
                                     let num: Int = y*3+x+1
                                     numButton(num: num)
-                                }, label: {
+                                }){
                                     Image(systemName: "\(y * 3 + x + 1).circle")
-                                        .buttonStyle(numButtonStyle())
-                                })
+                                }.buttonStyle(numButtonStyle())
                                     
                             }
                         }
@@ -113,9 +119,7 @@ struct InputView: View {
     private func inputAndOutput(isPlus: Bool){
         if(inputMoney != "" && inputMoney.count < 9){
             sum = isPlus ? sum + Int(inputMoney)! : sum - Int(inputMoney)!
-            
-            //MoneyListの構造を考えて，ここから書いていこうね
-            //addArray(name: "", money: Int(inputMoney)!, isPlus: 0)
+            addArray("", Int(inputMoney)!, isPlus)
             inputMoney = ""
         }
     }
@@ -124,6 +128,16 @@ struct InputView: View {
         if(inputMoney.count < 9){
             inputMoney += String(num)
         }
+    }
+    
+    private func addArray(_ name:String, _ money:Int,_ isPlus:Bool){
+        let newMoneyList = MoneyList(context: viewContext)
+        newMoneyList.timestamp = Date()
+        newMoneyList.name = name
+        newMoneyList.money = Int32(money)
+        newMoneyList.isPlus = isPlus
+        
+        try? viewContext.save()
     }
     
 }
