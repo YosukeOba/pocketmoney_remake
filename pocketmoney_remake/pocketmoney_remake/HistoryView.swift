@@ -42,8 +42,7 @@ struct HistoryView: View {
                         Section(header: Text(sectionDateFormatter.string(from: moneyData.date))){
                             ForEach(moneyData.moneyInfos, id:\.date) { moneyInfo in
                                 HStack{
-                                    Text(timeFormatter.string(from: moneyInfo.date))
-                                    Spacer()
+                                    Text(timeFormatter.string(from: moneyInfo.date)).padding()
                                     Text(moneyInfo.name != "" ? moneyInfo.name : moneyInfo.isPlus ? "+" + String(moneyInfo.money) : "-" + String(moneyInfo.money))
                                     Text(moneyInfo.series != 1 ? "× " + String(moneyInfo.series) : "")
                                     Spacer()

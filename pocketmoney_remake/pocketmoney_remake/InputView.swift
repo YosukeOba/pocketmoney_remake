@@ -45,16 +45,11 @@ struct InputView: View {
                     }
                     .navigationBarTitle("入力", displayMode: .inline)
                     .navigationBarItems(leading: (
-                        Button(action: {
-                            self.isOpenFavoriteMenuView.toggle()
-                        }, label: {
+                        NavigationLink(destination: FavoriteMenuView()){
                             Image(systemName: "gearshape.circle")
                                 .imageScale(.large)
-                        })
-                            .contentShape(Rectangle())))
-                    .sheet(isPresented: $isOpenFavoriteMenuView){
-                        FavoriteMenuView()
-                    }
+                        }
+                    ))
                     
                     HStack{
                         Text(inputMoney=="" ? "0" : String.localizedStringWithFormat("%d",Int(inputMoney)!))
@@ -110,6 +105,32 @@ struct InputView: View {
                             inputAndOutput(isPlus: false)
                         })
                             .buttonStyle(InputButtonStyle())
+                    }
+                    
+                    HStack{
+                        ForEach(inputLists, id:\.number){ inputList in
+                            if(inputList.isOn && inputList.name != "" && inputList.money != ""){
+                                Button(action: {
+                                    if(inputList.isPlus == true){
+                                        sum += Int(inputList.money!)!
+                                        addArray(inputList.name!, Int(inputList.money!)!, inputList.isPlus)
+                                    } else {
+                                        sum -= Int(inputList.money!)!
+                                        addArray(inputList.name!, Int(inputList.money!)!, inputList.isPlus)
+                                    }
+                                }, label: {
+                                    Text(inputList.isPlus == true ? inputList.name! + ", +" + inputList.money! : inputList.name! + ", -" + inputList.money!)
+                                        .multilineTextAlignment(.center)
+                                        .padding(.horizontal)
+                                        .foregroundColor(inputList.isPlus ? Color.blue : Color.red)
+                                })
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(inputList.isPlus ? Color.blue : Color.red, lineWidth: 1)
+                                )
+                                .padding(.horizontal)
+                            }
+                        }
                     }
                 }
             }
