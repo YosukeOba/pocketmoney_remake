@@ -97,7 +97,7 @@ struct FavoriteMenuRowView: View {
         })
     }
     
-    func sync(){
+    private func sync(){
         inputList.number = Int16(number)
         inputList.isOn = isOn
         inputList.name = name

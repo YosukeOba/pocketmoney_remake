@@ -113,10 +113,10 @@ struct InputView: View {
                                 Button(action: {
                                     if(inputList.isPlus == true){
                                         sum += Int(inputList.money!)!
-                                        addArray(inputList.name!, Int(inputList.money!)!, inputList.isPlus)
+                                        addArray(inputList.name!, inputList.money!, inputList.isPlus)
                                     } else {
                                         sum -= Int(inputList.money!)!
-                                        addArray(inputList.name!, Int(inputList.money!)!, inputList.isPlus)
+                                        addArray(inputList.name!, inputList.money!, inputList.isPlus)
                                     }
                                 }, label: {
                                     Text(inputList.isPlus == true ? inputList.name! + ", +" + inputList.money! : inputList.name! + ", -" + inputList.money!)
@@ -140,7 +140,7 @@ struct InputView: View {
     private func inputAndOutput(isPlus: Bool){
         if(inputMoney != "" && inputMoney.count < 9){
             sum = isPlus ? sum + Int(inputMoney)! : sum - Int(inputMoney)!
-            addArray("", Int(inputMoney)!, isPlus)
+            addArray("", inputMoney, isPlus)
             inputMoney = ""
         }
     }
@@ -151,11 +151,11 @@ struct InputView: View {
         }
     }
     
-    private func addArray(_ name:String, _ money:Int,_ isPlus:Bool){
+    private func addArray(_ name:String, _ money:String,_ isPlus:Bool){
         let newMoneyList = MoneyList(context: viewContext)
         newMoneyList.timestamp = Date()
         newMoneyList.name = name
-        newMoneyList.money = Int32(money)
+        newMoneyList.money = money
         newMoneyList.isPlus = isPlus
         
         try? viewContext.save()
