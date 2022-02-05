@@ -130,16 +130,16 @@ struct ModificationView: View{
                             .stroke(Color.primary, lineWidth: 1))
                 .padding([.horizontal])
                 TextField("名称を入力", text:$name)
-                    .contentShape(Rectangle())
                     .padding()
+                    .contentShape(Rectangle())
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.primary, lineWidth: 1))
                     .padding([.horizontal])
                 HStack{
                     TextField("金額を入力", text:$money)
                         .keyboardType(.numberPad)
-                        .contentShape(Rectangle())
                         .padding()
+                        .contentShape(Rectangle())
                         .overlay(RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.primary, lineWidth: 1))
                         .padding([.leading])
@@ -174,16 +174,6 @@ struct ModificationView: View{
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .alert(isPresented: $showingDeleteAlert){
-                        Alert(title: Text("警告"),
-                              message: Text("項目を削除します"),
-                              primaryButton: .cancel(Text("キャンセル")),
-                              secondaryButton: .destructive(Text("削除"),
-                                                            action: {
-                            deleteItem()
-                            dismiss()
-                        }))
-                    }
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationTitle("変更")
@@ -203,14 +193,22 @@ struct ModificationView: View{
                             Image(systemName: "arrow.backward")
                         }
                     ).tint(.orange)
-                        .alert(isPresented: $showingReturnAlert){
-                            Alert(title: Text("警告"),
-                                  message: Text("金額が入力されていません"),
-                                  dismissButton: .default(Text("了解")))
-                        }
                 }
             }
-            
+            .alert("警告", isPresented: $showingDeleteAlert){
+                Button("削除", role: .destructive){
+                        deleteItem()
+                        dismiss()
+                }
+            } message: {
+                Text("項目を削除します")
+                      
+            }
+            .alert("警告", isPresented: $showingReturnAlert){
+                Button("了解"){}
+            } message: {
+                Text("金額が入力されていません")
+            }
         }
     }
     
