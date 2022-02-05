@@ -70,15 +70,6 @@ struct HistoryView: View {
         }
     }
     
-    func deleteItems(_ num:Int){
-        withAnimation{
-            let temp = moneyLists[num]
-            viewContext.delete(temp)
-            try? viewContext.save()
-            reflesh()
-        }
-    }
-    
     func reflesh(){
         var i:Int = 0
         moneyDatas = []
@@ -113,6 +104,9 @@ struct ModificationView: View{
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.dismiss) var dismiss
     
+    @State var showingDeleteAlert:Bool = false
+    @State var showingReturnAlert:Bool = false
+    
     @State var date:Date
     @State var name:String
     @State var money:String
@@ -120,61 +114,125 @@ struct ModificationView: View{
     @State var num:Int
     
     var body: some View{
-        VStack{
-            DatePicker(selection: $date){
-                Text("日時")
-            }
-            TextField("名称を入力", text:$name)
-            HStack{
-                TextField("金額を入力", text:$money)
-                    .keyboardType(.numberPad)
-                Text("円")
-            }
-            HStack{
-                Text("収入")
-                    .foregroundColor(.blue)
-                Image(systemName: isPlus ? "checkmark.square" : "square")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
+        ZStack{
+            Color.background
+                .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    UIApplication.shared.closeKeyboard()
+                }
+            VStack{
+                DatePicker(selection: $date){
+                    Text("日時")
+                }
+                .contentShape(Rectangle())
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 1))
+                .padding([.horizontal])
+                TextField("名称を入力", text:$name)
+                    .contentShape(Rectangle())
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.primary, lineWidth: 1))
+                    .padding([.horizontal])
+                HStack{
+                    TextField("金額を入力", text:$money)
+                        .keyboardType(.numberPad)
+                        .contentShape(Rectangle())
+                        .padding()
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.primary, lineWidth: 1))
+                        .padding([.leading])
+                    Text("円")
+                        .padding([.top, .trailing])
+                }
+                HStack{
+                    Text("収入")
+                        .foregroundColor(.blue)
+                    Image(systemName: isPlus ? "checkmark.square" : "square")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                    Spacer()
+                    Text("支出")
+                        .foregroundColor(.red)
+                    Image(systemName: isPlus ? "square" : "checkmark.square")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                }
+                .padding()
+                .contentShape(Rectangle())
+                .padding([.horizontal])
+                .onTapGesture {
+                    isPlus.toggle()
+                }
                 Spacer()
-                Text("支出")
-                    .foregroundColor(.red)
-                Image(systemName: isPlus ? "square" : "checkmark.square")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-            }.onTapGesture {
-                isPlus.toggle()
-            }
-        }
-        .navigationTitle("変更")
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button(
-                    action: {
-                        sync()
-                        dismiss()
-                    }, label: {
-                        Image(systemName: "arrow.backward")
+                Button(action: {
+                    self.showingDeleteAlert.toggle()
+                }, label: {
+                    Text("Delete").frame(maxWidth: .infinity)
+                })
+                    .buttonStyle(.borderedProminent)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .alert(isPresented: $showingDeleteAlert){
+                        Alert(title: Text("警告"),
+                              message: Text("項目を削除します"),
+                              primaryButton: .cancel(Text("キャンセル")),
+                              secondaryButton: .destructive(Text("削除"),
+                                                            action: {
+                            deleteItem()
+                            dismiss()
+                        }))
                     }
-                ).tint(.orange)
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .navigationTitle("変更")
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(
+                        action: {
+                            if money != "" {
+                                sync()
+                                dismiss()
+                            } else {
+                                self.showingReturnAlert.toggle()
+                                money = moneyLists[num].money!
+                            }
+                        }, label: {
+                            Image(systemName: "arrow.backward")
+                        }
+                    ).tint(.orange)
+                        .alert(isPresented: $showingReturnAlert){
+                            Alert(title: Text("警告"),
+                                  message: Text("金額が入力されていません"),
+                                  dismissButton: .default(Text("了解")))
+                        }
+                }
+            }
+            
         }
-//        .onChange(of: date, perform: {_ in
-//            sync()
-//        })
+    }
+    
+    private func deleteItem(){
+        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)! : sum + Int(moneyLists[num].money!)!
+        
+        let temp = moneyLists[num]
+        viewContext.delete(temp)
+        try? viewContext.save()
+        change = true
     }
     
     private func sync(){
-        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)! : sum + Int(moneyLists[num].money!)!
-        sum = isPlus ? sum + Int(money)! : sum - Int(money)!
-        
-        moneyLists[num].timestamp = date
-        moneyLists[num].name = name
-        moneyLists[num].money = money
-        moneyLists[num].isPlus = isPlus
-        try? viewContext.save()
-        change = true
+            sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)! : sum + Int(moneyLists[num].money!)!
+            sum = isPlus ? sum + Int(money)! : sum - Int(money)!
+            
+            moneyLists[num].timestamp = date
+            moneyLists[num].name = name
+            moneyLists[num].money = money
+            moneyLists[num].isPlus = isPlus
+            try? viewContext.save()
+            change = true
     }
 }
 

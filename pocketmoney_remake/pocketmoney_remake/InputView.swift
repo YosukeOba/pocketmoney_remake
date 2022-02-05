@@ -119,7 +119,7 @@ struct InputView: View {
                                         addArray(inputList.name!, inputList.money!, inputList.isPlus)
                                     }
                                 }, label: {
-                                    Text(inputList.isPlus == true ? inputList.name! + ", +" + inputList.money! : inputList.name! + ", -" + inputList.money!)
+                                    Text(inputList.isPlus == true ? inputList.name! + "\n+" + inputList.money! : inputList.name! + "\n-" + inputList.money!)
                                         .multilineTextAlignment(.center)
                                         .padding(.horizontal)
                                         .foregroundColor(inputList.isPlus ? Color.blue : Color.red)
