@@ -13,8 +13,14 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="SubscribeList" representedClassName="SubscribeList" syncable="YES" codeGenerationType="class">
+        <attribute name="isPlus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="money" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="InputList" positionX="-63" positionY="-9" width="128" height="104"/>
         <element name="MoneyList" positionX="-54" positionY="36" width="128" height="89"/>
+        <element name="SubscribeList" positionX="-36" positionY="63" width="128" height="74"/>
     </elements>
 </model>

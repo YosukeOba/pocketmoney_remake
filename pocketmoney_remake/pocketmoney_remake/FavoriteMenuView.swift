@@ -21,19 +21,35 @@ struct FavoriteMenuView: View {
     var body: some View {
         ZStack{
             VStack{
-                Form{
-                    ForEach(inputLists) { inputList in
-                        Section(header: Text("お気に入り" + String(inputList.number+1))){
-                            FavoriteMenuRowView(inputList: inputList, number: Int(inputList.number), isOn: inputList.isOn, name: inputList.name!, money: inputList.money!, isPlus: inputList.isPlus)
+                VStack{
+                    Form{
+                        ForEach(inputLists) { inputList in
+                            Section(header: Text("お気に入り" + String(inputList.number+1))){
+                                FavoriteMenuRowView(inputList: inputList, number: Int(inputList.number), isOn: inputList.isOn, name: inputList.name!, money: inputList.money!, isPlus: inputList.isPlus)
+                            }
                         }
                     }
                 }
+                Spacer()
+                NavigationLink(destination: SubscribeView(), label: {
+                    HStack{
+                        Text("サブスク").frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                    }
+                })
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.blue, lineWidth: 1)
+                    )
+                    .foregroundColor(Color.primary)
+                    .padding()
             }
             .background(Color(UIColor.systemGray6))
             .onTapGesture(perform: {
                 UIApplication.shared.closeKeyboard()
             })
-            Spacer()
         }
     }
 }

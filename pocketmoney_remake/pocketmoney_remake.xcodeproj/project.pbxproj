@@ -22,6 +22,7 @@
 		33C83CD527A9345700523435 /* FavoriteMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD427A9345700523435 /* FavoriteMenuView.swift */; };
 		33C83CD727A9595000523435 /* InputButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD627A9595000523435 /* InputButtonStyle.swift */; };
 		33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD827AA6BBA00523435 /* MoneyData.swift */; };
+		33C83CDD27B4AD7C00523435 /* SubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CDC27B4AD7B00523435 /* SubscribeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		33C83CD427A9345700523435 /* FavoriteMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMenuView.swift; sourceTree = "<group>"; };
 		33C83CD627A9595000523435 /* InputButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputButtonStyle.swift; sourceTree = "<group>"; };
 		33C83CD827AA6BBA00523435 /* MoneyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyData.swift; sourceTree = "<group>"; };
+		33C83CDC27B4AD7B00523435 /* SubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				33C83CD027A9299C00523435 /* InputView.swift */,
 				33C83CD627A9595000523435 /* InputButtonStyle.swift */,
 				33C83CD427A9345700523435 /* FavoriteMenuView.swift */,
+				33C83CDC27B4AD7B00523435 /* SubscribeView.swift */,
 				33C83CCE27A91BC000523435 /* FirstView.swift */,
 				33C83CA327A91A4C00523435 /* Assets.xcassets */,
 				33C83CA827A91A4C00523435 /* Persistence.swift */,
@@ -291,6 +294,7 @@
 				33C83CA227A91A3C00523435 /* ContentView.swift in Sources */,
 				33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */,
 				33C83CA027A91A3C00523435 /* pocketmoney_remakeApp.swift in Sources */,
+				33C83CDD27B4AD7C00523435 /* SubscribeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
