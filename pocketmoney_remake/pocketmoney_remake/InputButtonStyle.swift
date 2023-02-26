@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct numButtonStyle: ButtonStyle {
-    
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 60, height: 60)
@@ -27,9 +27,9 @@ struct InputButtonStyle: ButtonStyle {
             .padding()
             .foregroundColor(Color.primary)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.blue, lineWidth: 1)
-            )
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.blue, lineWidth: 1)
+        )
             .padding()
     }
 }
