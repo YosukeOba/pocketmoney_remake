@@ -43,14 +43,26 @@ struct HistoryView: View {
                     ForEach(moneyDatas, id: \.date) { moneyData in
                         Section(header: Text(sectionDateFormatter.string(from: moneyData.date))) {
                             ForEach(moneyData.moneyInfos, id: \.date) { moneyInfo in
-                                NavigationLink(destination: ModificationView(change: self.$change, date: moneyInfo.date, name: moneyInfo.name, money: moneyInfo.money, isPlus: moneyInfo.isPlus, num: moneyInfo.num), label: {
+                                NavigationLink(destination: ModificationView(
+                                    change: self.$change,
+                                    date: moneyInfo.date,
+                                    name: moneyInfo.name,
+                                    money: moneyInfo.money,
+                                    isPlus: moneyInfo.isPlus,
+                                    num: moneyInfo.num
+                                ),
+                                label: {
                                     HStack {
                                         // Text(String(moneyInfo.num))
                                         Text(timeFormatter.string(from: moneyInfo.date)).padding([.vertical])
-                                        Text(moneyInfo.name != "" ? moneyInfo.name : moneyInfo.isPlus ? "+" + moneyInfo.money : "-" + moneyInfo.money)
+                                        Text(moneyInfo.name != "" ?
+                                            moneyInfo.name : moneyInfo.isPlus ?
+                                            "+" + moneyInfo.money : "-" + moneyInfo.money)
                                         Text(moneyInfo.series != 1 ? "× " + String(moneyInfo.series) : "")
                                         Spacer()
-                                        Text(moneyInfo.isPlus ? "+" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series) : "-" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series))
+                                        Text(moneyInfo.isPlus ?
+                                            "+" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series) :
+                                            "-" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series))
                                             .foregroundColor(moneyInfo.isPlus ? .blue : .red)
                                     }
                                     .contentShape(Rectangle())
@@ -71,21 +83,21 @@ struct HistoryView: View {
     }
 
     func reflesh() {
-        var i = 0
+        var count = 0
         moneyDatas = []
         for moneyList in moneyLists {
             if moneyDatas.last?.dateDC != Calendar.current.dateComponents([.year, .month, .day], from: moneyList.timestamp!) {
-                moneyDatas.append(MoneyData(moneyList.timestamp!, moneyList.name!, moneyList.money!, moneyList.isPlus, i))
-                i += 1
+                moneyDatas.append(MoneyData(moneyList.timestamp!, moneyList.name!, moneyList.money!, moneyList.isPlus, count))
+                count += 1
             } else if moneyDatas.last?.moneyInfos.last?.name == moneyList.name,
                       moneyDatas.last?.moneyInfos.last?.money == moneyList.money,
                       moneyDatas.last?.moneyInfos.last?.isPlus == moneyList.isPlus
             {
                 moneyDatas[moneyDatas.count - 1].moneyInfos[moneyDatas[moneyDatas.count - 1].moneyInfos.count - 1].seriesPlusOne()
-                i += 1
+                count += 1
             } else {
-                moneyDatas[moneyDatas.count - 1].addArray(moneyList.timestamp!, moneyList.name!, moneyList.money!, moneyList.isPlus, i)
-                i += 1
+                moneyDatas[moneyDatas.count - 1].addArray(moneyList.timestamp!, moneyList.name!, moneyList.money!, moneyList.isPlus, count)
+                count += 1
             }
         }
     }

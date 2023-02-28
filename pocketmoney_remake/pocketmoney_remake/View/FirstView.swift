@@ -38,7 +38,7 @@ struct FirstView: View {
                 Button(action: {
                     if firstSum != "" {
                         sum = Int(firstSum)!
-                        InputListFirstSet()
+                        inputListFirstSet()
                         isFirstView = false
                     }
                 }, label: {
@@ -54,7 +54,7 @@ struct FirstView: View {
         }
     }
 
-    private func InputListFirstSet() {
+    private func inputListFirstSet() {
         for index in 0 ..< 3 {
             let newInputList = InputList(context: viewContext)
             newInputList.number = Int16(index)

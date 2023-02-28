@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct numButtonStyle: ButtonStyle {
+struct NumButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 60, height: 60)

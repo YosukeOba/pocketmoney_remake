@@ -61,15 +61,15 @@ struct InputView: View {
                         Text("円")
                             .padding([.top, .trailing])
                     }
-                    ForEach(0 ..< 3) { y in
+                    ForEach(0 ..< 3) { row in
                         HStack {
-                            ForEach(0 ..< 3) { x in
+                            ForEach(0 ..< 3) { col in
                                 Button(action: {
-                                    let num: Int = y * 3 + x + 1
+                                    let num: Int = row * 3 + col + 1
                                     numButton(num: num)
                                 }) {
-                                    Image(systemName: "\(y * 3 + x + 1).circle")
-                                }.buttonStyle(numButtonStyle())
+                                    Image(systemName: "\(row * 3 + col + 1).circle")
+                                }.buttonStyle(NumButtonStyle())
                             }
                         }
                     }
@@ -78,21 +78,21 @@ struct InputView: View {
                         Button(action: {
                             inputMoney = ""
                         }) { Image(systemName: "multiply.circle") }
-                            .buttonStyle(numButtonStyle())
+                            .buttonStyle(NumButtonStyle())
 
                         Button(action: {
                             if inputMoney != "" {
                                 numButton(num: 0)
                             }
                         }) { Image(systemName: "0.circle") }
-                            .buttonStyle(numButtonStyle())
+                            .buttonStyle(NumButtonStyle())
 
                         Button(action: {
                             if inputMoney.count != 0 {
                                 inputMoney.removeLast()
                             }
                         }) { Image(systemName: "arrow.backward.circle") }
-                            .buttonStyle(numButtonStyle())
+                            .buttonStyle(NumButtonStyle())
                     }
 
                     HStack {

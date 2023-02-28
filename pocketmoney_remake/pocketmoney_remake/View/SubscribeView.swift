@@ -22,7 +22,14 @@ struct SubscribeView: View {
         NavigationView {
             List {
                 ForEach(subscribeLists) { subscribeList in
-                    NavigationLink(destination: AddSuscribeView(addDate: subscribeList.addDate!, name: subscribeList.name!, money: subscribeList.money!, isPlus: subscribeList.isPlus, frequency: Int(subscribeList.frequency), payDate: Int(subscribeList.payDate)), label: {
+                    NavigationLink(destination: AddSuscribeView(
+                        addDate: subscribeList.addDate!,
+                        name: subscribeList.name!,
+                        money: subscribeList.money!,
+                        isPlus: subscribeList.isPlus,
+                        frequency: Int(subscribeList.frequency),
+                        payDate: Int(subscribeList.payDate)
+                    ), label: {
                         HStack {
                             Text(subscribeList.name!)
                             Text(subscribeList.money!)
