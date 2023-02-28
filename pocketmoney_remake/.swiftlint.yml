@@ -11,3 +11,5 @@ opt_in_rules:
 - multiline_parameters_brackets
 - sorted_imports
 - missing_docs
+disabled_rules:
+- line_length
