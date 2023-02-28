@@ -113,17 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				33C83C9F27A91A3C00523435 /* pocketmoney_remakeApp.swift */,
-				33C83CA127A91A3C00523435 /* ContentView.swift */,
-				33C83CD227A929B800523435 /* HistoryView.swift */,
-				33C83CD027A9299C00523435 /* InputView.swift */,
-				33C83CD627A9595000523435 /* InputButtonStyle.swift */,
-				33C83CD427A9345700523435 /* FavoriteMenuView.swift */,
-				33C83CDC27B4AD7B00523435 /* SubscribeView.swift */,
-				33C83CCE27A91BC000523435 /* FirstView.swift */,
+				B8CDBE2229AE477B0084A7AD /* View */,
 				33C83CA327A91A4C00523435 /* Assets.xcassets */,
 				33C83CA827A91A4C00523435 /* Persistence.swift */,
 				33C83CAA27A91A4C00523435 /* pocketmoney_remake.xcdatamodeld */,
-				33C83CD827AA6BBA00523435 /* MoneyData.swift */,
+				B8CDBE2129AE476D0084A7AD /* Model */,
 				33C83CA527A91A4C00523435 /* Preview Content */,
 			);
 			path = pocketmoney_remake;
@@ -154,6 +148,28 @@
 			path = pocketmoney_remakeUITests;
 			sourceTree = "<group>";
 		};
+		B8CDBE2129AE476D0084A7AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33C83CD827AA6BBA00523435 /* MoneyData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8CDBE2229AE477B0084A7AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33C83CCE27A91BC000523435 /* FirstView.swift */,
+				33C83CDC27B4AD7B00523435 /* SubscribeView.swift */,
+				33C83CD427A9345700523435 /* FavoriteMenuView.swift */,
+				33C83CD627A9595000523435 /* InputButtonStyle.swift */,
+				33C83CD027A9299C00523435 /* InputView.swift */,
+				33C83CD227A929B800523435 /* HistoryView.swift */,
+				33C83CA127A91A3C00523435 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +180,7 @@
 				33C83C9827A91A3B00523435 /* Sources */,
 				33C83C9927A91A3B00523435 /* Frameworks */,
 				33C83C9A27A91A3B00523435 /* Resources */,
+				B8CDBE2329AE48E90084A7AD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -278,6 +295,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B8CDBE2329AE48E90084A7AD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		33C83C9827A91A3B00523435 /* Sources */ = {

@@ -8,7 +8,6 @@
 import XCTest
 
 class pocketmoney_remakeUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

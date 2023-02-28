@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FirstView: View {
-
     @AppStorage("isFirstView") var isFirstView: Bool = true
     @AppStorage("Sum") var sum: Int = 0
     @State var firstSum: String = ""
@@ -20,8 +19,8 @@ struct FirstView: View {
             Color.background
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                UIApplication.shared.closeKeyboard()
-            }
+                    UIApplication.shared.closeKeyboard()
+                }
             VStack {
                 Text("全財産の登録を行いましょう！")
                 HStack {
@@ -30,9 +29,9 @@ struct FirstView: View {
                         .font(.largeTitle)
                         .padding()
                         .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.green, lineWidth: 1)
-                    )
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.green, lineWidth: 1)
+                        )
                         .padding()
                     Text("円")
                 }
@@ -43,11 +42,11 @@ struct FirstView: View {
                         isFirstView = false
                     }
                 }, label: {
-                        Text("登録")
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                    }).overlay(
+                    Text("登録")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }).overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.blue, lineWidth: 1)
                 ).padding()
@@ -56,7 +55,7 @@ struct FirstView: View {
     }
 
     private func InputListFirstSet() {
-        for index in 0..<3 {
+        for index in 0 ..< 3 {
             let newInputList = InputList(context: viewContext)
             newInputList.number = Int16(index)
             newInputList.name = ""
@@ -67,7 +66,6 @@ struct FirstView: View {
             try? viewContext.save()
         }
     }
-
 }
 
 struct FirstView_Previews: PreviewProvider {

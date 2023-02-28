@@ -17,15 +17,14 @@ struct MoneyData {
 
     init(_ date: Date, _ name: String, _ money: String, _ isPlus: Bool, _ num: Int) {
         self.date = date
-        self.dateDC = Calendar.current.dateComponents([.year, .month, .day], from: self.date)
-        self.moneyInfos.append(MoneyInfo(self.date, name, money, isPlus, num))
+        dateDC = Calendar.current.dateComponents([.year, .month, .day], from: self.date)
+        moneyInfos.append(MoneyInfo(self.date, name, money, isPlus, num))
     }
 
     mutating func addArray(_ date: Date, _ name: String, _ money: String, _ isPlus: Bool, _ num: Int) {
-        self.moneyInfos.append(MoneyInfo(date, name, money, isPlus, num))
+        moneyInfos.append(MoneyInfo(date, name, money, isPlus, num))
     }
 }
-
 
 struct MoneyInfo {
     var id = UUID()
@@ -45,6 +44,6 @@ struct MoneyInfo {
     }
 
     mutating func seriesPlusOne() {
-        self.series += 1
+        series += 1
     }
 }

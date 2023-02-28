@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct FavoriteMenuView: View {
-
     @FetchRequest(
         entity: InputList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \InputList.number, ascending: true)],
         predicate: nil,
-        animation: .default)
+        animation: .default
+    )
     private var inputLists: FetchedResults<InputList>
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -32,22 +32,22 @@ struct FavoriteMenuView: View {
                 }
                 Spacer()
                 NavigationLink(destination: SubscribeView(), label: {
-                        HStack {
-                            Text("サブスク").frame(maxWidth: .infinity, alignment: .leading)
-                            Spacer()
-                            Image(systemName: "chevron.forward")
-                        }
-                    })
-                    .padding()
-                    .overlay(
+                    HStack {
+                        Text("サブスク").frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                    }
+                })
+                .padding()
+                .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.blue, lineWidth: 1)
                 )
-                    .foregroundColor(Color.primary)
-                    .padding()
+                .foregroundColor(Color.primary)
+                .padding()
             }
-                .background(Color(UIColor.systemGray6))
-                .onTapGesture(perform: {
+            .background(Color(UIColor.systemGray6))
+            .onTapGesture(perform: {
                 UIApplication.shared.closeKeyboard()
             })
         }
@@ -67,11 +67,10 @@ struct FavoriteMenuRowView: View {
 
     var body: some View {
         VStack {
-            if(isOn) {
+            if isOn {
                 HStack {
                     TextField("名称を入力", text: $name)
-                    Toggle(isOn: $isOn) {
-                    }.toggleStyle(SwitchToggleStyle())
+                    Toggle(isOn: $isOn) {}.toggleStyle(SwitchToggleStyle())
                 }
                 HStack {
                     TextField("金額を入力", text: $money)
@@ -99,16 +98,16 @@ struct FavoriteMenuRowView: View {
                 }.toggleStyle(SwitchToggleStyle())
             }
         }
-            .onChange(of: isOn, perform: { _ in
+        .onChange(of: isOn, perform: { _ in
             sync()
         })
-            .onChange(of: name, perform: { _ in
+        .onChange(of: name, perform: { _ in
             sync()
         })
-            .onChange(of: money, perform: { _ in
+        .onChange(of: money, perform: { _ in
             sync()
         })
-            .onChange(of: isPlus, perform: { _ in
+        .onChange(of: isPlus, perform: { _ in
             sync()
         })
     }

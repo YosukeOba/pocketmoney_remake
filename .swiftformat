@@ -1,0 +1,7 @@
+# format options
+--header ignore
+--elseposition same-line
+--guardelse same-line
+--tabwidth 4
+--indent 4
+--linebreaks lf

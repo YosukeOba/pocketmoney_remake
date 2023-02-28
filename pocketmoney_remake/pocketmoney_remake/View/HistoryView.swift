@@ -5,18 +5,18 @@
 //  Created by 大場　洋介 on 2022/02/01.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct HistoryView: View {
-
     @AppStorage("Sum") var sum: Int = 0
 
     @FetchRequest(
         entity: MoneyList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \MoneyList.timestamp, ascending: false)],
         predicate: nil,
-        animation: .default)
+        animation: .default
+    )
     private var moneyLists: FetchedResults<MoneyList>
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -44,26 +44,26 @@ struct HistoryView: View {
                         Section(header: Text(sectionDateFormatter.string(from: moneyData.date))) {
                             ForEach(moneyData.moneyInfos, id: \.date) { moneyInfo in
                                 NavigationLink(destination: ModificationView(change: self.$change, date: moneyInfo.date, name: moneyInfo.name, money: moneyInfo.money, isPlus: moneyInfo.isPlus, num: moneyInfo.num), label: {
-                                        HStack {
-                                            //Text(String(moneyInfo.num))
-                                            Text(timeFormatter.string(from: moneyInfo.date)).padding([.vertical])
-                                            Text(moneyInfo.name != "" ? moneyInfo.name : moneyInfo.isPlus ? "+" + moneyInfo.money : "-" + moneyInfo.money)
-                                            Text(moneyInfo.series != 1 ? "× " + String(moneyInfo.series) : "")
-                                            Spacer()
-                                            Text(moneyInfo.isPlus ? "+" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series) : "-" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series))
-                                                .foregroundColor(moneyInfo.isPlus ? .blue : .red)
-                                        }
-                                            .contentShape(Rectangle())
-                                    })
+                                    HStack {
+                                        // Text(String(moneyInfo.num))
+                                        Text(timeFormatter.string(from: moneyInfo.date)).padding([.vertical])
+                                        Text(moneyInfo.name != "" ? moneyInfo.name : moneyInfo.isPlus ? "+" + moneyInfo.money : "-" + moneyInfo.money)
+                                        Text(moneyInfo.series != 1 ? "× " + String(moneyInfo.series) : "")
+                                        Spacer()
+                                        Text(moneyInfo.isPlus ? "+" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series) : "-" + String.localizedStringWithFormat("%d", Int(moneyInfo.money)! * moneyInfo.series))
+                                            .foregroundColor(moneyInfo.isPlus ? .blue : .red)
+                                    }
+                                    .contentShape(Rectangle())
+                                })
                             }
                         }
                     }
                 }.navigationBarTitle("履歴", displayMode: .inline)
             }
-                .onAppear() {
+            .onAppear {
                 reflesh()
             }
-                .onChange(of: change, perform: { _ in
+            .onChange(of: change, perform: { _ in
                 reflesh()
                 change = false
             })
@@ -71,15 +71,16 @@ struct HistoryView: View {
     }
 
     func reflesh() {
-        var i: Int = 0
+        var i = 0
         moneyDatas = []
         for moneyList in moneyLists {
             if moneyDatas.last?.dateDC != Calendar.current.dateComponents([.year, .month, .day], from: moneyList.timestamp!) {
                 moneyDatas.append(MoneyData(moneyList.timestamp!, moneyList.name!, moneyList.money!, moneyList.isPlus, i))
                 i += 1
-            } else if moneyDatas.last?.moneyInfos.last?.name == moneyList.name &&
-                moneyDatas.last?.moneyInfos.last?.money == moneyList.money &&
-                moneyDatas.last?.moneyInfos.last?.isPlus == moneyList.isPlus {
+            } else if moneyDatas.last?.moneyInfos.last?.name == moneyList.name,
+                      moneyDatas.last?.moneyInfos.last?.money == moneyList.money,
+                      moneyDatas.last?.moneyInfos.last?.isPlus == moneyList.isPlus
+            {
                 moneyDatas[moneyDatas.count - 1].moneyInfos[moneyDatas[moneyDatas.count - 1].moneyInfos.count - 1].seriesPlusOne()
                 i += 1
             } else {
@@ -98,7 +99,8 @@ struct ModificationView: View {
         entity: MoneyList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \MoneyList.timestamp, ascending: false)],
         predicate: nil,
-        animation: .default)
+        animation: .default
+    )
     private var moneyLists: FetchedResults<MoneyList>
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -118,17 +120,17 @@ struct ModificationView: View {
             Color.background
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture {
-                UIApplication.shared.closeKeyboard()
-            }
+                    UIApplication.shared.closeKeyboard()
+                }
             VStack {
                 DatePicker(selection: $date) {
                     Text("日時")
                 }
-                    .contentShape(Rectangle())
-                    .padding()
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.primary, lineWidth: 1))
-                    .padding([.horizontal])
+                .contentShape(Rectangle())
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.primary, lineWidth: 1))
+                .padding([.horizontal])
                 TextField("名称を入力", text: $name)
                     .padding()
                     .contentShape(Rectangle())
@@ -159,26 +161,26 @@ struct ModificationView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                 }
-                    .padding()
-                    .contentShape(Rectangle())
-                    .padding([.horizontal])
-                    .onTapGesture {
+                .padding()
+                .contentShape(Rectangle())
+                .padding([.horizontal])
+                .onTapGesture {
                     isPlus.toggle()
                 }
                 Spacer()
                 Button(action: {
                     self.showingDeleteAlert.toggle()
                 }, label: {
-                        Text("Delete").frame(maxWidth: .infinity)
-                    })
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                    .padding()
+                    Text("Delete").frame(maxWidth: .infinity)
+                })
+                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+                .padding()
             }
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-                .navigationTitle("変更")
-                .navigationBarBackButtonHidden(true)
-                .toolbar {
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .navigationTitle("変更")
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(
                         action: {
@@ -195,17 +197,16 @@ struct ModificationView: View {
                     ).tint(.orange)
                 }
             }
-                .alert("警告", isPresented: $showingDeleteAlert) {
+            .alert("警告", isPresented: $showingDeleteAlert) {
                 Button("削除", role: .destructive) {
                     deleteItem()
                     dismiss()
                 }
             } message: {
                 Text("項目を削除します")
-
             }
-                .alert("警告", isPresented: $showingReturnAlert) {
-                Button("了解") { }
+            .alert("警告", isPresented: $showingReturnAlert) {
+                Button("了解") {}
             } message: {
                 Text("金額が入力されていません")
             }
@@ -213,7 +214,7 @@ struct ModificationView: View {
     }
 
     private func deleteItem() {
-        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)!: sum + Int(moneyLists[num].money!)!
+        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)! : sum + Int(moneyLists[num].money!)!
 
         let temp = moneyLists[num]
         viewContext.delete(temp)
@@ -222,7 +223,7 @@ struct ModificationView: View {
     }
 
     private func sync() {
-        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)!: sum + Int(moneyLists[num].money!)!
+        sum = moneyLists[num].isPlus ? sum - Int(moneyLists[num].money!)! : sum + Int(moneyLists[num].money!)!
         sum = isPlus ? sum + Int(money)! : sum - Int(money)!
 
         moneyLists[num].timestamp = date

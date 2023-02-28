@@ -5,11 +5,10 @@
 //  Created by 大場　洋介 on 2022/02/01.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct ContentView: View {
-
     @AppStorage("isFirstView") var isFirstView: Bool = true
 
     var body: some View {
@@ -20,18 +19,18 @@ struct ContentView: View {
                 TabView {
                     InputView()
                         .tabItem {
-                        VStack {
-                            Image(systemName: "wallet.pass")
-                            Text("入力")
-                        }
-                    }.tag(1)
+                            VStack {
+                                Image(systemName: "wallet.pass")
+                                Text("入力")
+                            }
+                        }.tag(1)
                     HistoryView()
                         .tabItem {
-                        VStack {
-                            Image(systemName: "clock")
-                            Text("履歴")
-                        }
-                    }.tag(2)
+                            VStack {
+                                Image(systemName: "clock")
+                                Text("履歴")
+                            }
+                        }.tag(2)
                 }
             }
         }

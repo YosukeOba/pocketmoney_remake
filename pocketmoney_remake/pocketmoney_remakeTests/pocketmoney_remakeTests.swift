@@ -5,11 +5,10 @@
 //  Created by 大場　洋介 on 2022/02/01.
 //
 
-import XCTest
 @testable import pocketmoney_remake
+import XCTest
 
 class pocketmoney_remakeTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -28,9 +27,8 @@ class pocketmoney_remakeTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct SubscribeView: View {
-
     @FetchRequest(
         entity: SubscribeList.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \SubscribeList.addDate, ascending: false)],
         predicate: nil,
-        animation: .default)
+        animation: .default
+    )
     private var subscribeLists: FetchedResults<SubscribeList>
 
     @Environment(\.managedObjectContext) private var viewContext
@@ -23,20 +23,19 @@ struct SubscribeView: View {
             List {
                 ForEach(subscribeLists) { subscribeList in
                     NavigationLink(destination: AddSuscribeView(addDate: subscribeList.addDate!, name: subscribeList.name!, money: subscribeList.money!, isPlus: subscribeList.isPlus, frequency: Int(subscribeList.frequency), payDate: Int(subscribeList.payDate)), label: {
-                            HStack {
-                                Text(subscribeList.name!)
-                                Text(subscribeList.money!)
-                                Spacer()
-                            }
-                        })
-
+                        HStack {
+                            Text(subscribeList.name!)
+                            Text(subscribeList.money!)
+                            Spacer()
+                        }
+                    })
                 }
             }
-                .toolbar {
+            .toolbar {
                 ToolbarItem {
                     NavigationLink(destination: AddSuscribeView(), label: {
-                            Label("Add Item", systemImage: "plus")
-                        })
+                        Label("Add Item", systemImage: "plus")
+                    })
                 }
             }
         }
@@ -58,8 +57,8 @@ struct AddSuscribeView: View {
             Color.background
                 .edgesIgnoringSafeArea(.all)
                 .onTapGesture(perform: {
-                UIApplication.shared.closeKeyboard()
-            })
+                    UIApplication.shared.closeKeyboard()
+                })
             VStack {
                 TextField("名称を入力", text: $name)
                     .padding()
@@ -91,10 +90,10 @@ struct AddSuscribeView: View {
                         .resizable()
                         .frame(width: 20, height: 20)
                 }
-                    .padding()
-                    .contentShape(Rectangle())
-                    .padding([.horizontal])
-                    .onTapGesture {
+                .padding()
+                .contentShape(Rectangle())
+                .padding([.horizontal])
+                .onTapGesture {
                     isPlus.toggle()
                 }
             }
