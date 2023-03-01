@@ -23,14 +23,16 @@ struct ContentView: View {
                                 Image(systemName: "wallet.pass")
                                 Text("入力")
                             }
-                        }.tag(1)
+                        }
+                        .tag(1)
                     HistoryView()
                         .tabItem {
                             VStack {
                                 Image(systemName: "clock")
                                 Text("履歴")
                             }
-                        }.tag(2)
+                        }
+                        .tag(2)
                 }
             }
         }
@@ -56,7 +58,7 @@ extension UIApplication {
     }
 }
 
-public extension Color {
+extension Color {
     #if os(macOS)
         static let background = Color(NSColor.windowBackgroundColor)
         static let secondaryBackground = Color(NSColor.underPageBackgroundColor)

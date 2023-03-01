@@ -69,15 +69,15 @@ struct InputView: View {
                                     numButton(num: num)
                                 }) {
                                     Image(systemName: "\(row * 3 + col + 1).circle")
-                                }.buttonStyle(NumButtonStyle())
+                                }
+                                .buttonStyle(NumButtonStyle())
                             }
                         }
                     }
 
                     HStack {
-                        Button(action: {
-                            inputMoney = ""
-                        }) { Image(systemName: "multiply.circle") }
+                        Button(action: { inputMoney = "" })
+                            { Image(systemName: "multiply.circle") }
                             .buttonStyle(NumButtonStyle())
 
                         Button(action: {

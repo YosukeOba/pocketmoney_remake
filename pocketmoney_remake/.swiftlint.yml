@@ -13,3 +13,6 @@ opt_in_rules:
 - missing_docs
 disabled_rules:
 - line_length
+- opening_brace
+- multiple_closures_with_trailing_closure
+- closure_end_indentation

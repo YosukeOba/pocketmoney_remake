@@ -46,10 +46,12 @@ struct FirstView: View {
                         .font(.title)
                         .multilineTextAlignment(.center)
                         .padding()
-                }).overlay(
+                })
+                .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.blue, lineWidth: 1)
-                ).padding()
+                )
+                .padding()
             }
         }
     }
