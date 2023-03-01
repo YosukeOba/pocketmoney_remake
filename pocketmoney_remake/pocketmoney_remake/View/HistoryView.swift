@@ -53,7 +53,6 @@ struct HistoryView: View {
                                 ),
                                 label: {
                                     HStack {
-                                        // Text(String(moneyInfo.num))
                                         Text(timeFormatter.string(from: moneyInfo.date)).padding([.vertical])
                                         Text(moneyInfo.name != "" ?
                                             moneyInfo.name : moneyInfo.isPlus ?

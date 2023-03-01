@@ -151,6 +151,7 @@
 		B8CDBE2129AE476D0084A7AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				33C83CD627A9595000523435 /* InputButtonStyle.swift */,
 				33C83CD827AA6BBA00523435 /* MoneyData.swift */,
 			);
 			path = Model;
@@ -162,7 +163,6 @@
 				33C83CCE27A91BC000523435 /* FirstView.swift */,
 				33C83CDC27B4AD7B00523435 /* SubscribeView.swift */,
 				33C83CD427A9345700523435 /* FavoriteMenuView.swift */,
-				33C83CD627A9595000523435 /* InputButtonStyle.swift */,
 				33C83CD027A9299C00523435 /* InputView.swift */,
 				33C83CD227A929B800523435 /* HistoryView.swift */,
 				33C83CA127A91A3C00523435 /* ContentView.swift */,
