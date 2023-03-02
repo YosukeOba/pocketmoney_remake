@@ -18,5 +18,6 @@ https://user-images.githubusercontent.com/52928718/219941080-78b7b961-8752-4542-
 
 
 ## 今後の予定
+- Firebaseを使う
 - サブスクの登録
   - 月ごと，年ごとに自動で履歴に追加されるような
