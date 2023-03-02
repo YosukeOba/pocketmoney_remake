@@ -8,7 +8,7 @@
 @testable import pocketmoney_remake
 import XCTest
 
-class PocketmoneyRemakeTests: XCTestCase {
+class pocketmoney_remakeTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

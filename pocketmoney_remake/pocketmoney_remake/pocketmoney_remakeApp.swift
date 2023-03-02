@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct PocketmoneyRemakeApp: App {
+struct pocketmoney_remakeApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
