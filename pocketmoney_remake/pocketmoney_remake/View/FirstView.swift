@@ -5,12 +5,15 @@
 //  Created by 大場　洋介 on 2022/02/01.
 //
 
+import FirebaseAuth
+import FirebaseCore
 import SwiftUI
 
 struct FirstView: View {
     @AppStorage("isFirstView") var isFirstView: Bool = true
     @AppStorage("Sum") var sum: Int = 0
     @State var firstSum: String = ""
+    @State var uidText = "uid"
 
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -22,6 +25,15 @@ struct FirstView: View {
                     UIApplication.shared.closeKeyboard()
                 }
             VStack {
+                Button {
+                    guard let uid = Auth.auth().currentUser?.uid else {
+                        return uidText = "ログインしてないよ"
+                    }
+                    uidText = uid
+                } label: {
+                    Text("test button")
+                }
+                Text(uidText)
                 Text("全財産の登録を行いましょう！")
                 HStack {
                     TextField("全財産を入力", text: $firstSum)

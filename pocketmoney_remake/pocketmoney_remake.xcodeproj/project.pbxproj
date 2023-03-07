@@ -23,6 +23,12 @@
 		33C83CD727A9595000523435 /* InputButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD627A9595000523435 /* InputButtonStyle.swift */; };
 		33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CD827AA6BBA00523435 /* MoneyData.swift */; };
 		33C83CDD27B4AD7C00523435 /* SubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C83CDC27B4AD7B00523435 /* SubscribeView.swift */; };
+		B86AEEA129B7736600428193 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B86AEEA029B7736600428193 /* GoogleService-Info.plist */; };
+		B86AEEA429B7766A00428193 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEA329B7766A00428193 /* FirebaseAnalytics */; };
+		B86AEEA629B7766A00428193 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEA529B7766A00428193 /* FirebaseFirestore */; };
+		B86AEEA929B7803F00428193 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEA829B7803F00428193 /* FirebaseAuth */; };
+		B86AEEAD29B783D700428193 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEAC29B783D700428193 /* GoogleSignIn */; };
+		B86AEEAF29B783D700428193 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEAE29B783D700428193 /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,8 @@
 		33C83CD627A9595000523435 /* InputButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputButtonStyle.swift; sourceTree = "<group>"; };
 		33C83CD827AA6BBA00523435 /* MoneyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyData.swift; sourceTree = "<group>"; };
 		33C83CDC27B4AD7B00523435 /* SubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeView.swift; sourceTree = "<group>"; };
+		B86AEEA029B7736600428193 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B86AEEAA29B7821000428193 /* pocketmoney-remake-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "pocketmoney-remake-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B86AEEAF29B783D700428193 /* GoogleSignInSwift in Frameworks */,
+				B86AEEA429B7766A00428193 /* FirebaseAnalytics in Frameworks */,
+				B86AEEAD29B783D700428193 /* GoogleSignIn in Frameworks */,
+				B86AEEA929B7803F00428193 /* FirebaseAuth in Frameworks */,
+				B86AEEA629B7766A00428193 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +109,7 @@
 				33C83CB427A91A4D00523435 /* pocketmoney_remakeTests */,
 				33C83CBE27A91A4D00523435 /* pocketmoney_remakeUITests */,
 				33C83C9D27A91A3B00523435 /* Products */,
+				B86AEEA729B7803F00428193 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +126,8 @@
 		33C83C9E27A91A3B00523435 /* pocketmoney_remake */ = {
 			isa = PBXGroup;
 			children = (
+				B86AEEAA29B7821000428193 /* pocketmoney-remake-Info.plist */,
+				B86AEEA029B7736600428193 /* GoogleService-Info.plist */,
 				33C83C9F27A91A3C00523435 /* pocketmoney_remakeApp.swift */,
 				B8CDBE2229AE477B0084A7AD /* View */,
 				33C83CA327A91A4C00523435 /* Assets.xcassets */,
@@ -146,6 +162,13 @@
 				33C83CC127A91A4D00523435 /* pocketmoney_remakeUITestsLaunchTests.swift */,
 			);
 			path = pocketmoney_remakeUITests;
+			sourceTree = "<group>";
+		};
+		B86AEEA729B7803F00428193 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B8CDBE2129AE476D0084A7AD /* Model */ = {
@@ -188,6 +211,13 @@
 			dependencies = (
 			);
 			name = pocketmoney_remake;
+			packageProductDependencies = (
+				B86AEEA329B7766A00428193 /* FirebaseAnalytics */,
+				B86AEEA529B7766A00428193 /* FirebaseFirestore */,
+				B86AEEA829B7803F00428193 /* FirebaseAuth */,
+				B86AEEAC29B783D700428193 /* GoogleSignIn */,
+				B86AEEAE29B783D700428193 /* GoogleSignInSwift */,
+			);
 			productName = pocketmoney_remake;
 			productReference = 33C83C9C27A91A3B00523435 /* pocketmoney_remake.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +290,10 @@
 				Base,
 			);
 			mainGroup = 33C83C9327A91A3B00523435;
+			packageReferences = (
+				B86AEEA229B7766A00428193 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B86AEEAB29B783D600428193 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 33C83C9D27A91A3B00523435 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,6 +312,7 @@
 			files = (
 				33C83CA727A91A4C00523435 /* Preview Assets.xcassets in Resources */,
 				33C83CA427A91A4C00523435 /* Assets.xcassets in Resources */,
+				B86AEEA129B7736600428193 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +552,7 @@
 				DEVELOPMENT_TEAM = G9DE7A9X97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pocketmoney-remake-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -547,6 +583,7 @@
 				DEVELOPMENT_TEAM = G9DE7A9X97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "pocketmoney-remake-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -682,6 +719,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B86AEEA229B7766A00428193 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		B86AEEAB29B783D600428193 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B86AEEA329B7766A00428193 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86AEEA229B7766A00428193 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B86AEEA529B7766A00428193 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86AEEA229B7766A00428193 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B86AEEA829B7803F00428193 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86AEEA229B7766A00428193 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B86AEEAC29B783D700428193 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86AEEAB29B783D600428193 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		B86AEEAE29B783D700428193 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86AEEAB29B783D600428193 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		33C83CAA27A91A4C00523435 /* pocketmoney_remake.xcdatamodeld */ = {
