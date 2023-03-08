@@ -11,9 +11,10 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("isFirstView") var isFirstView: Bool = true
+    @AppStorage("isLoginView") var isLoginView: Bool = true
 
     var body: some View {
-        if Auth.auth().currentUser == nil {
+        if isLoginView {
             LoginView()
         } else if isFirstView {
             FirstView()
