@@ -6,13 +6,16 @@
 //
 
 import CoreData
+import FirebaseAuth
 import SwiftUI
 
 struct ContentView: View {
     @AppStorage("isFirstView") var isFirstView: Bool = true
 
     var body: some View {
-        if isFirstView {
+        if Auth.auth().currentUser == nil {
+            LoginView()
+        } else if isFirstView {
             FirstView()
         } else {
             ZStack {

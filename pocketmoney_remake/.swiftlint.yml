@@ -17,3 +17,4 @@ disabled_rules:
 - multiple_closures_with_trailing_closure
 - closure_end_indentation
 - type_name
+- multiline_parameters_brackets

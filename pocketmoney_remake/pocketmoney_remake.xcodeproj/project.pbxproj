@@ -29,6 +29,7 @@
 		B86AEEA929B7803F00428193 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEA829B7803F00428193 /* FirebaseAuth */; };
 		B86AEEAD29B783D700428193 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEAC29B783D700428193 /* GoogleSignIn */; };
 		B86AEEAF29B783D700428193 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B86AEEAE29B783D700428193 /* GoogleSignInSwift */; };
+		B8CF199929B8221F001CCCE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CF199829B8221F001CCCE8 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		33C83CDC27B4AD7B00523435 /* SubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeView.swift; sourceTree = "<group>"; };
 		B86AEEA029B7736600428193 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B86AEEAA29B7821000428193 /* pocketmoney-remake-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "pocketmoney-remake-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B8CF199829B8221F001CCCE8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				33C83CD027A9299C00523435 /* InputView.swift */,
 				33C83CD227A929B800523435 /* HistoryView.swift */,
 				33C83CA127A91A3C00523435 /* ContentView.swift */,
+				B8CF199829B8221F001CCCE8 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				33C83CCF27A91BC000523435 /* FirstView.swift in Sources */,
 				33C83CAC27A91A4C00523435 /* pocketmoney_remake.xcdatamodeld in Sources */,
 				33C83CD727A9595000523435 /* InputButtonStyle.swift in Sources */,
+				B8CF199929B8221F001CCCE8 /* LoginView.swift in Sources */,
 				33C83CD127A9299C00523435 /* InputView.swift in Sources */,
 				33C83CA227A91A3C00523435 /* ContentView.swift in Sources */,
 				33C83CD927AA6BBA00523435 /* MoneyData.swift in Sources */,
