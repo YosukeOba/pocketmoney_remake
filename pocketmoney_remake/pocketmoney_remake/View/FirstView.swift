@@ -25,15 +25,6 @@ struct FirstView: View {
                     UIApplication.shared.closeKeyboard()
                 }
             VStack {
-                Button {
-                    guard let uid = Auth.auth().currentUser?.uid else {
-                        return uidText = "ログインしてないよ"
-                    }
-                    uidText = uid
-                } label: {
-                    Text("test button")
-                }
-                Text(uidText)
                 Text("全財産の登録を行いましょう！")
                 HStack {
                     TextField("全財産を入力", text: $firstSum)
